@@ -42,14 +42,6 @@ def datetime_handler(x):
 
 curdate = datetime.datetime.today()
 retention = datetime.timedelta(days=retention)
-# olddate = datetime.datetime(2018, 2, 1)
-# print curdate.strftime("%Y%m%d")
-# print olddate.strftime("%Y%m%d")
-# print (curdate - olddate).days
-#
-#
-# ourdate = datetime.datetime.strptime("20180309", '%Y%m%d')
-# print (ourdate - curdate).days
 
 session = boto3.Session(profile_name=awsprofile, region_name=region)
 
@@ -102,12 +94,7 @@ def createBackup():
 
         response = ec2.create_tags(Resources=resources, Tags=instances[instance]['tags'])
 
-
-
-        #
         print imageid
-
-
 
 def removeOld():
     datetodelete = (curdate - retention).strftime("%Y%m%d")
